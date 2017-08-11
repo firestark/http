@@ -66,6 +66,6 @@ class factory
 				return $handler->handle ( $content,
 					new \http\response ( '', $status, $this->headers ) );
 
-		throw new cantHandleTypeException ( $type );
+		throw new cantHandleTypeException ( gettype ( $content ) );
 	}
 }
