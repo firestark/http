@@ -27,11 +27,11 @@
         "firestark/support": "*"
     },
     "require-dev": {
-        
+        "firestark/testing": "*"
     },
     "autoload": {
         "psr-4": {
-
+        	"http\\": "source"
         },
         "files": [
             "source/helpers.php"

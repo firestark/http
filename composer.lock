@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "35e25825449687456a530caff06f708c",
+    "content-hash": "8ec9a4b49630b8a2e69cbd9a48c583fa",
     "packages": [
         {
             "name": "firestark/support",
@@ -59,7 +59,175 @@
             "time": "2017-08-10T20:28:56+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "firestark/testing",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firestark/testing.git",
+                "reference": "f934146632a70dfc4ed568b5fc64de295d8b044b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firestark/testing/zipball/f934146632a70dfc4ed568b5fc64de295d8b044b",
+                "reference": "f934146632a70dfc4ed568b5fc64de295d8b044b",
+                "shasum": ""
+            },
+            "require": {
+                "mockery/mockery": "*"
+            },
+            "require-dev": {
+                "firestark/support": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": [],
+                "files": [
+                    "source/helpers.php",
+                    "../../hamcrest/hamcrest-php/hamcrest/Hamcrest.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aron Wouters",
+                    "email": "lionar@mail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Irsan van Wel",
+                    "email": "vanwel@eyedouble.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A unit testing framework.",
+            "keywords": [
+                "Eyedouble",
+                "firestark",
+                "framework",
+                "lionar",
+                "unit testing"
+            ],
+            "time": "2017-08-11T08:32:49+00:00"
+        },
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "10b977bd20ea6a2fcf0e32a941c9140fbdb75033"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/10b977bd20ea6a2fcf0e32a941c9140fbdb75033",
+                "reference": "10b977bd20ea6a2fcf0e32a941c9140fbdb75033",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3|^7.0"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "1.3.3",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2017-04-07T19:46:20+00:00"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "b99c29ccf4dbbd41eafce4523d2412d930d393ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/b99c29ccf4dbbd41eafce4523d2412d930d393ed",
+                "reference": "b99c29ccf4dbbd41eafce4523d2412d930d393ed",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~2.0",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.7|~6.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
+            "homepage": "http://github.com/mockery/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2017-08-07T09:49:04+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": [],
