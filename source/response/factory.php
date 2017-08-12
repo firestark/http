@@ -61,6 +61,9 @@ class factory
 
 	private function generate ( $content, int $status ) : \http\response
 	{
+		if ( $content instanceOf \http\response )
+			return $content;
+			
 		foreach ( $this->handlers as $handler )
 			if ( $handler->canHandle ( $content ) )
 				return $handler->handle ( $content,
