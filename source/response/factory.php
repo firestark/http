@@ -3,86 +3,26 @@
 namespace http\response;
 
 use closure;
-use http\content\handler;
-use http\exceptions\cantHandleTypeException;
 
 class factory
 {
-	/**
-	 * An array of content handlers.
-	 * @var array
-	 */
-	private $handlers = [ ];
-
-	/**
-	 * The default headers to use when generating a response.
-	 * @var array
-	 */
-	private $headers = [ ];
-
-	public function __construct ( array $handlers = [ ], array $headers = [ ] )
+	public function ok ( $content ) : partial
 	{
-		foreach ( $handlers as $handler )
-			$this->handle ( $handler );
-
-		foreach ( $headers as $key => $value )
-			$this->header ( $key, $value );
+		return new partial ( $content, 200 );
 	}
 
-	public function handle ( handler $handler )
+	public function created ( $content ) : partial
 	{
-		$this->handlers [ ] = $handler;
+		return new partial ( $content, 201 );
 	}
 
-	public function header ( string $key, string $value )
+	public function notFound ( $content ) : partial
 	{
-		$this->headers [ $key ] = $value;
+		return new partial ( $content, 404 );
 	}
 
-	public function ok ( $content ) : \http\response
+	public function conflict ( $content ) : partial
 	{
-		return $this->generate ( $content, 200 );
-	}
-
-	public function created ( $content ) : \http\response
-	{
-		return $this->generate ( $content, 201 );
-	}
-
-	public function notFound ( $content ) : \http\response
-	{
-		return $this->generate ( $content, 404 );
-	}
-
-	public function conflict ( $content ) : \http\response
-	{
-		return $this->generate ( $content, 409 );
-	}
-
-	private function generate ( $content, int $status ) : \http\response
-	{
-		$response = $this->create ( $content );
-		$response->status ( $status );
-
-		foreach ( $this->headers as $key => $value )
-			$response [ $key ] = $value;
-
-		return $response;
-	}
-
-	private function create ( $content )
-	{
-		if ( $content instanceOf \http\response )
-			return $content;
-		return $this->transform ( $content );
-	}
-
-	private function transform ( $content ) : \http\response
-	{
-		foreach ( $this->handlers as $handler )
-			if ( $handler->canHandle ( $content ) )
-				return $handler->handle ( $content,
-					new \http\response ( '', 200, [ ] ) );
-		throw new cantHandleTypeException ( gettype ( $content ) );
+		return new partial ( $content, 409 );
 	}
 }

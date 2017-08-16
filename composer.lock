@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/firestark/support.git",
-                "reference": "386a9aaab12fdddc98ccb96580c11b07e52541b4"
+                "reference": "1b24c72f1bb47592402abac33d2edb5ff2160541"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firestark/support/zipball/386a9aaab12fdddc98ccb96580c11b07e52541b4",
-                "reference": "386a9aaab12fdddc98ccb96580c11b07e52541b4",
+                "url": "https://api.github.com/repos/firestark/support/zipball/1b24c72f1bb47592402abac33d2edb5ff2160541",
+                "reference": "1b24c72f1bb47592402abac33d2edb5ff2160541",
                 "shasum": ""
             },
             "type": "library",
@@ -30,6 +30,7 @@
                     "is\\": "source/is"
                 },
                 "files": [
+                    "source/helpers/checks.php",
                     "source/helpers/text.php"
                 ]
             },
@@ -56,7 +57,7 @@
                 "lionar",
                 "support"
             ],
-            "time": "2017-08-10T20:28:56+00:00"
+            "time": "2017-08-12T18:52:48+00:00"
         }
     ],
     "packages-dev": [
