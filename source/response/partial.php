@@ -10,10 +10,10 @@ class partial
     private $status = 200;
     private $headers = [ ];
 
-	public function __construct ( $data, int $code = 200, array $headers = [ ] )
+	public function __construct ( $data, int $status = 200, array $headers = [ ] )
 	{
 		$this->data = $data;
-		$this->code = $code;
+		$this->status = $status;
 		foreach ( $headers as $key => $value )
 			$this->header ( $key, $value );
 	}
