@@ -6,30 +6,30 @@ use closure;
 
 class kernel
 {
-    private $middlewares = [ ];
+    use \accessible;
 
-    public function middleware ( string $key, closure $action )
+    private $middlewares = null;
+
+    public function __construct ( middlewares $middlewares = null )
     {
-        $this->middlewares [ $key ] = $action;
+        $this->middlewares = ( $middlewares ) ?: new middlewares;
     }
 
     public function handle ( request $request ) : response
     {
-        foreach ( $this->middlewares as $middleware )
-        {
-            if ( empty ( next ( $this->middlewares ) ) )
-                $next = $this->dispatch ( );
-            $response = $middleware ( $request, $next );
-        }
+        $dispatch = new middleware ( 'responding to the client', $this->dispatch ( ) );
+        $this->middlewares->add ( $dispatch );
 
-        return ( $response ) ?? call_user_func( $this->dispatch ( ), $request );
+        return $this->middlewares->run ( $request );
     }
 
     private function dispatch ( ) : closure
     {
-        return function ( request $request )
+        return function ( request $request ) : response
         {
-            return new response ( $request [ 'X-QbilTrade-Client' ] ?? 'noooooh' );
+            $response = new response ( $request [ 'X-QbilTrade-Client' ] ?? 'noooooh' );
+            $response [ 'initial' ] = 'initial header';
+            return $response;
         };
     }
 }

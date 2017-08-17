@@ -8,25 +8,21 @@ class middlewares
 
     private $stack = [ ];
 
-    public function add ( string $key, closure $action )
+    public function add ( middleware $middleware )
     {
-        $this->stack [ $key ] = $action;
+        $this->stack [ ] = $middleware;
     }
 
-    public function hasNext ( ) : bool
+    public function run ( request $request ) : response
     {
-        return ( count ( $this->stack ) !< 2 );
+        $this->order ( );
+        return $this->stack [ 0 ]->run ( $request );
     }
 
-    public function next ( )
+    private function order ( )
     {
-        list ( $action ) = array_slice ( $this->stack, 1, 1 );
-        return $action;
-    }
-
-    public function run ( request $request, closure $next ) : closure
-    {
-        $action = array_shift ( $this->stack );
-        return $action ( $request, $next );
+        foreach ( $this->stack as $middleware )
+            if ( ( $next = next ( $this->stack ) ) !== false )
+                $middleware->preceding ( $next );
     }
 }
