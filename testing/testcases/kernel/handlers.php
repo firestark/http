@@ -1,10 +1,12 @@
 <?php
 
 use http\content\handler;
+use http\kernel;
 use http\response;
-use http\response\factory;
+use http\request;
 
-require __DIR__ . '/../../../../vendor/autoload.php';
+
+require __DIR__ . '/../../../vendor/autoload.php';
 
 
 $kernel = new kernel;
@@ -32,3 +34,7 @@ function ( response\partial $partial, response $response ) use ( $kernel ) : res
 	$response->content ( $kernel->handlers->handle ( $partial->data ) );
 	return $response;
 } ) );
+
+
+$response = $kernel->handle ( new request ( '/' ) );
+$response->send ( );

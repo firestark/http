@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ec9a4b49630b8a2e69cbd9a48c583fa",
+    "content-hash": "e87b2fc3f5bc92d5ff105c6b0fb7070b",
     "packages": [
         {
             "name": "firestark/support",
@@ -58,6 +58,52 @@
                 "support"
             ],
             "time": "2017-08-12T18:52:48+00:00"
+        },
+        {
+            "name": "nikic/fast-route",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/FastRoute.git",
+                "reference": "7ced406715e68151947fa540ab58eb238864215d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/7ced406715e68151947fa540ab58eb238864215d",
+                "reference": "7ced406715e68151947fa540ab58eb238864215d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8|~5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FastRoute\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov",
+                    "email": "nikic@php.net"
+                }
+            ],
+            "description": "Fast request router for PHP",
+            "keywords": [
+                "router",
+                "routing"
+            ],
+            "time": "2017-05-18T13:44:56+00:00"
         }
     ],
     "packages-dev": [
