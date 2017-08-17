@@ -28,11 +28,16 @@ class request implements arrayaccess
 	public static function capture ( ) : request
 	{
 		$uri = parse_url ( $_SERVER [ 'REQUEST_URI' ] ) [ 'path' ];
-		return new static ( $uri, $_SERVER [ 'REQUEST_METHOD' ], 
+		return new static ( $uri, $_SERVER [ 'REQUEST_METHOD' ],
 			parameters ( ( $_SERVER [ 'HTTP_CONTENT_TYPE' ] ) ?? '' ),
 			'', getallheaders ( ) );
 	}
-    
+
+	public function get ( string $parameter, $default = null )
+	{
+		return ( $this->parameters [ $parameter ] ) ?? $default;
+	}
+
     public function __toString ( ) : string
     {
         return $this->method . ' ' . $this->uri;
