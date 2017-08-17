@@ -34,8 +34,8 @@ class kernel
 
         return function ( request $request ) : response
         {
-            $content = $this->app->call (
-                $this->router->match ( ( string ) $request ) );
+            list ( $task, $arguments ) = $this->router->match ( ( string ) $request );
+            $content = $this->app->call ( $task, $arguments );
 
             return $this->handlers->handle ( $content );
         };
