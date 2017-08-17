@@ -7,7 +7,7 @@ class partial
     use \accessible;
 
 	private $data = null;
-    private $code = 200;
+    private $status = 200;
     private $headers = [ ];
 
 	public function __construct ( $data, int $code = 200, array $headers = [ ] )
