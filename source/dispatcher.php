@@ -54,7 +54,8 @@ class dispatcher extends base
 
 		if ( $result [ 0 ] === 2 )
 			throw new methodNotAllowedException ( $method, $path );
-		if ( $result [ 0 ] === 1 )
+		
+		if ( $result [ 0 ] === 0 )
 			throw new notFoundException ( $method, $path );
 	}
 }
