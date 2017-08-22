@@ -9,13 +9,13 @@ class kernel
 {
     use \accessible;
 
-    private $app, $router, $handlers, $middlewares = null;
+    private $app, $dispatcher, $handlers, $middlewares = null;
 
-    public function __construct ( app $app, router $router,
+    public function __construct ( app $app, dispatcher $dispatcher,
         handlers $handlers, middlewares $middlewares )
     {
         $this->app = $app;
-        $this->router = $router;
+        $this->dispatcher = $dispatcher;
         $this->handlers = $handlers;
         $this->middlewares = $middlewares;
     }
@@ -30,11 +30,9 @@ class kernel
 
     private function dispatch ( ) : closure
     {
-        $this->router->ready ( );
-
         return function ( request $request ) : response
         {
-            list ( $task, $arguments ) = $this->router->match ( ( string ) $request );
+            list ( $task, $arguments ) = $this->dispatcher->match ( ( string ) $request );
             $content = $this->app->call ( $task, $arguments );
 
             return $this->handlers->handle ( $content );
