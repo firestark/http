@@ -1,8 +1,10 @@
 <?php
 
-namespace http;
+namespace http\response;
 
-class preflightResponse extends response
+use http\response;
+
+class preflight extends response
 {
 	public function allowedMethod ( string $method )
 	{

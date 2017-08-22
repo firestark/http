@@ -4,6 +4,7 @@ namespace http;
 
 use closure;
 use http\exceptions\routeAlreadyExistsException;
+use http\response\preflight;
 
 class router
 {
@@ -37,7 +38,8 @@ class router
 	{
 		$this->routes [ 'OPTIONS' ] [ $path ] = function ( ) use ( $method )
 		{
-			$response = new preflightResponse;
+			$response = new preflight;
+			$response->allowedMethod ( 'OPTIONS' );
 			$response->allowedMethod ( $method );
 			return $response;
 		};
