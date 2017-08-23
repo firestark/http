@@ -11,15 +11,15 @@ class route
 	private $uri = '';
 	private $path = '';
 	private $method = '';
-	private $action = null;
+	private $task = null;
 
-	public function __construct ( string $uri, closure $action )
+	public function __construct ( string $uri, closure $task )
 	{
 		list ( $method, $path ) = explode ( ' ', $uri );
 		
 		$this->uri = $uri;
 		$this->path = $path;
 		$this->method = $method;
-		$this->action = $action;
+		$this->task = $task;
 	}
 }

@@ -21,9 +21,8 @@ class dispatcher extends base
 		  	new generator
 		);
 
-		foreach ( $routes as $method => $route )
-			foreach ( $route as $uri => $task )
-				$this->add ( $method, $uri, $task );
+		foreach ( $routes as $route )
+			$this->add ( $route->method, $route->path, $route->task );
 
 		parent::__construct ( $this->router->getData ( ) );
 	}

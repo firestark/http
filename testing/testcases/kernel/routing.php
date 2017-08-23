@@ -1,23 +1,22 @@
 <?php
 
 use http\dispatcher;
+use http\route;
 use http\router;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
 
 $router = new router;
-$router->add ( 'GET /', function ( )
+$router->add ( new route ( 'GET /', function ( )
 {
 	return 'Hello world';
-} );
+} ) );
 
-$router->add ( 'POST /', function ( )
+$router->add ( new route ( 'POST /', function ( )
 {
 	return 'Posted';
-} );
+} ) );
 
-// dd ( $router->routes );
-
-$dispatcher = new dispatcher ( $router->routes ); 
-dd ( $dispatcher->match ( 'OPTIONS /' ) [ 0 ] ( ) );
+$dispatcher = new dispatcher ( $router->routes );
+dd ( $dispatcher->match ( 'POST /' ) [ 0 ] ( ) );
