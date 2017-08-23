@@ -3,84 +3,55 @@
 namespace http;
 
 use closure;
-use FastRoute\DataGenerator\GroupCountBased as generator;
-use FastRoute\Dispatcher\GroupCountBased as dispatcher;
-use FastRoute\RouteCollector as routes;
-use FastRoute\RouteParser\Std as parser;
+use http\exceptions\routeAlreadyExistsException;
+use http\response\preflight;
 
 class router
 {
-	private $dispatcher, $routes = null;
+	use \accessible;
+	
+	private $routes = [ ];
 
-	public function __construct ( )
+	public function add ( string $uri, closure $action )
 	{
-		$this->routes = new routes (
-		  	new parser,
-		  	new generator
-		);
+		list ( $method, $path ) = explode ( ' ', $uri );
+		if ( $this->has ( $method, $path ) )
+			throw new routeAlreadyExistsException ( $uri );
+		$this->routes [ $method ] [ $path ] = $action;
+		$this->addOption ($method,  $path );
 	}
 
-	public function add ( string $key, closure $task )
+	public function has ( string $method, string $path ) : bool
 	{
-		list ( $method, $uri ) = explode ( ' ', $key );
-		$this->option ( $uri, $method );
-		$this->routes->addRoute ( $method, $uri, $task );
+		return ( isset ( $this->routes [ $method ] ) and
+			array_key_exists ( $path, $this->routes [ $method ] ) );
 	}
 
-	public function match ( string $key ) : array
+	private function addOption ( string $method, string $path )
 	{
-		list ( $method, $uri ) = explode ( ' ', $key );
-		$result = $this->dispatcher->dispatch ( $method, $uri );
-
-		return $this->handle ( $result, $key );
+		( ! $this->has ( 'OPTIONS', $path ) ) ?
+			$this->createOption ( $method, $path ) :
+			$this->addOptionMethod ( $method, $path );
 	}
 
-	public function ready ( )
+	private function createOption ( string $method, string $path )
 	{
-		$this->dispatcher = new dispatcher ( $this->routes->getData ( ) );
-	}
-
-	private function option ( string $uri, string $method )
-	{
-		if ( ! $this->has ( "OPTIONS $uri" ) )
-			return $this->createPreflight ( $uri, $method );
-
-		return $this->extendPreflight ( $uri, $method );
-	}
-
-	private function createPreflight ( string $uri, string $method )
-	{
-		$this->add ( "OPTIONS $uri", function ( ) use ( $method ) : preflightResponse
+		$this->routes [ 'OPTIONS' ] [ $path ] = function ( ) use ( $method )
 		{
-			$response = new preflightResponse;
-			$response->allowsMethod ( $method );
+			$response = new preflight;
+			$response->allowedMethod ( 'OPTIONS' );
+			$response->allowedMethod ( $method );
 			return $response;
-		} );
+		};
 	}
 
-	private function extendPreflight ( string $uri, string $method )
+	private function addOptionMethod ( string $method, string $path )
 	{
-		$response = $this->match ( "OPTIONS $uri" );
-
-		$this->add ( "OPTIONS $uri", function ( ) use ( $response, $method )
+		$response = $this->routes [ 'OPTIONS' ] [ $path ] ( );
+		$this->routes [ 'OPTIONS' ] [ $path ] = function ( ) use ( $response, $method )
 		{
-			$response->allowsMethod ( $method );
+			$response->allowedMethod ( $method );
 			return $response;
-		} );
-	}
-
-	private function decoded ( array $arguments ) : array
-    {
-        foreach ( $arguments as $key => $value )
-            $return [ $key ] = urldecode ( $value );
-        return ( $return ) ?? [ ];
-    }
-
-	private function handle ( array $result, string $key ) : array
-	{
-		if ( $result [ 0 ] === 1 )
-			return [ $result [ 1 ], $this->decoded ( $result [ 2 ] ) ];
-
-		throw new \exception ( "A route for: $key could not be found." );
+		};
 	}
 }
