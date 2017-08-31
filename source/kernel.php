@@ -13,13 +13,12 @@ class kernel
     private $baseUri = '';
 
     public function __construct ( app $app, dispatcher $dispatcher,
-        handlers $handlers, middlewares $middlewares, $baseUri = '' )
+        handlers $handlers, middlewares $middlewares )
     {
         $this->app = $app;
         $this->dispatcher = $dispatcher;
         $this->handlers = $handlers;
         $this->middlewares = $middlewares;
-        $this->baseUri = $baseUri;
     }
 
     public function handle ( request $request ) : response
@@ -33,10 +32,7 @@ class kernel
     private function dispatch ( ) : closure
     {
         return function ( request $request ) : response
-        {
-        	$uri = str_replace ( $this->baseUri, '', ( string ) $request );
-        	$uri = rtrim ( $uri, '/' ) . '/';
-        	
+        {        	
             list ( $task, $arguments ) = $this->dispatcher->match ( $uri );
             $content = $this->app->call ( $task, $arguments );
 
