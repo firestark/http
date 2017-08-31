@@ -113,12 +113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/firestark/testing.git",
-                "reference": "6187fe5ba90a0b273e60cb7d6b269238e2157d69"
+                "reference": "7e0cfc1dca13ff4c97cf8ebf1685074a874140ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firestark/testing/zipball/6187fe5ba90a0b273e60cb7d6b269238e2157d69",
-                "reference": "6187fe5ba90a0b273e60cb7d6b269238e2157d69",
+                "url": "https://api.github.com/repos/firestark/testing/zipball/7e0cfc1dca13ff4c97cf8ebf1685074a874140ff",
+                "reference": "7e0cfc1dca13ff4c97cf8ebf1685074a874140ff",
                 "shasum": ""
             },
             "require": {
@@ -129,7 +129,9 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": [],
+                "psr-4": {
+                    "": "source"
+                },
                 "files": [
                     "source/helpers.php",
                     "../../hamcrest/hamcrest-php/hamcrest/Hamcrest.php"
@@ -159,7 +161,7 @@
                 "lionar",
                 "unit testing"
             ],
-            "time": "2017-08-23T08:52:13+00:00"
+            "time": "2017-08-31T12:27:53+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",

@@ -10,14 +10,16 @@ class kernel
     use \accessible;
 
     private $app, $dispatcher, $handlers, $middlewares = null;
+    private $baseUri = '';
 
     public function __construct ( app $app, dispatcher $dispatcher,
-        handlers $handlers, middlewares $middlewares )
+        handlers $handlers, middlewares $middlewares, $baseUri = '' )
     {
         $this->app = $app;
         $this->dispatcher = $dispatcher;
         $this->handlers = $handlers;
         $this->middlewares = $middlewares;
+        $this->baseUri = $baseUri;
     }
 
     public function handle ( request $request ) : response
@@ -32,7 +34,10 @@ class kernel
     {
         return function ( request $request ) : response
         {
-            list ( $task, $arguments ) = $this->dispatcher->match ( ( string ) $request );
+        	$uri = str_replace ( $this->baseUri, '', ( string ) $request );
+        	$uri = rtrim ( $uri, '/' ) . '/';
+        	
+            list ( $task, $arguments ) = $this->dispatcher->match ( $uri );
             $content = $this->app->call ( $task, $arguments );
 
             return $this->handlers->handle ( $content );
