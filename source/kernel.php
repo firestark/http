@@ -33,7 +33,7 @@ class kernel
     {
         return function ( request $request ) : response
         {        	
-            list ( $task, $arguments ) = $this->dispatcher->match ( $uri );
+            list ( $task, $arguments ) = $this->dispatcher->match ( ( string ) $request );
             $content = $this->app->call ( $task, $arguments );
 
             return $this->handlers->handle ( $content );
