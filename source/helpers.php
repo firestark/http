@@ -24,9 +24,10 @@ if ( ! function_exists ( 'parameters' ) )
                 $input = file_get_contents ( 'php://input' );
     			if ( empty ( $input ) )
                     return [ ];
-                if ( json_decode ( $input, true ) === null )
+                $decoded = json_decode ( $input, true );
+                if ( $decoded === null )
     				throw new \exception ( 'Invalid JSON supplied.' );
-    			return $input;
+    			return $decoded;
     		default:
     			return $_REQUEST;
     	}
