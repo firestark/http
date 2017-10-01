@@ -21,8 +21,10 @@ if ( ! function_exists ( 'parameters' ) )
     {
     	switch ( $mime ) {
     		case 'application/json':
-    			$input = json_decode ( file_get_contents ( 'php://input' ), true );
-    			if ( $input === null )
+                $input = file_get_contents ( 'php://input' );
+    			if ( empty ( $input ) )
+                    return [ ];
+                if ( json_decode ( $input, true ) === null )
     				throw new \exception ( 'Invalid JSON supplied.' );
     			return $input;
     		default:
