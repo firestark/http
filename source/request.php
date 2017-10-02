@@ -34,21 +34,13 @@ class request implements arrayaccess
 			'', getallheaders ( ) );
 	}
 
-	public function get ( string $parameter, $default = '_not-provided' )
+	public function get ( string $parameter, $default = null )
 	{
-		return ( array_get ( $this->parameters, $parameter ) ) ?:
-			$this->resolve ( $default, $parameter );
+		return array_get ( $this->parameters, $parameter, $default );
 	}
 
     public function __toString ( ) : string
     {
         return $this->method . ' ' . $this->uri;
-    }
-
-    private function resolve ( $default, string $parameter )
-    {
-    	if ( $default === '_not-provided' )
-    		throw new missingRequestParameter ( $parameter );
-    	return $default;
     }
 }
