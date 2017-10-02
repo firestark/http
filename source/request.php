@@ -4,7 +4,6 @@ namespace http;
 
 use accessible;
 use arrayaccess;
-use http\exceptions\missingRequestParameter;
 
 class request implements arrayaccess
 {
