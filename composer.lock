@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/firestark/support.git",
-                "reference": "1b24c72f1bb47592402abac33d2edb5ff2160541"
+                "reference": "76b64f08a6e38835424b313c467fecb02d296720"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firestark/support/zipball/1b24c72f1bb47592402abac33d2edb5ff2160541",
-                "reference": "1b24c72f1bb47592402abac33d2edb5ff2160541",
+                "url": "https://api.github.com/repos/firestark/support/zipball/76b64f08a6e38835424b313c467fecb02d296720",
+                "reference": "76b64f08a6e38835424b313c467fecb02d296720",
                 "shasum": ""
             },
             "type": "library",
@@ -30,6 +30,7 @@
                     "is\\": "source/is"
                 },
                 "files": [
+                    "source/helpers/array.php",
                     "source/helpers/checks.php",
                     "source/helpers/text.php"
                 ]
@@ -57,7 +58,7 @@
                 "lionar",
                 "support"
             ],
-            "time": "2017-08-12T18:52:48+00:00"
+            "time": "2017-10-02T08:29:01+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -217,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "d1d330595a113fb2ed40bed22411af2327762f8d"
+                "reference": "87fc5f641657833f7c96f14ed3067effe94a0824"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1d330595a113fb2ed40bed22411af2327762f8d",
-                "reference": "d1d330595a113fb2ed40bed22411af2327762f8d",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/87fc5f641657833f7c96f14ed3067effe94a0824",
+                "reference": "87fc5f641657833f7c96f14ed3067effe94a0824",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +275,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2017-08-22T07:19:24+00:00"
+            "time": "2017-09-27T08:51:04+00:00"
         }
     ],
     "aliases": [],
