@@ -34,6 +34,7 @@ class dispatcher extends base
 
 	public function match ( string $uri )
 	{
+		$uri = rtrim ( $uri, '/' );
 		list ( $method, $path ) = explode ( ' ', $uri );
 		$result = parent::dispatch ( $method, $path );
 		return $this->handle ( $result, $method, $path );

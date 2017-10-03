@@ -13,4 +13,4 @@ $request = new request ( '/', 'GET',
 	]
 ] );
 
-dd ( $request->get ( 'measurements.quantity' ) );
+dd ( $request->get ( 'measurements.unit' ) );
