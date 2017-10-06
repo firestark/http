@@ -6,8 +6,11 @@ use closure;
 
 class factory
 {
-	public function ok ( $content ) : partial
+	public function ok ( $content = null ) : partial
 	{
+		if ( $content === null )
+			return new partial ( $content, 204 );
+
 		return new partial ( $content, 200 );
 	}
 
