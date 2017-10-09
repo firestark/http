@@ -33,3 +33,12 @@ if ( ! function_exists ( 'parameters' ) )
     	}
     }
 }
+
+if ( ! function_exists ( 'parse_url_array' ) )
+{
+    function request_parse ( string $value ) : array
+    {
+		$removed = str_replace ( [ '[', ']' ], '', $string );
+		return explode ( ',', $removed );
+    }
+}
