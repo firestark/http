@@ -6,6 +6,7 @@ use closure;
 use http\exceptions\routeAlreadyExistsException;
 use http\exceptions\routeDoesNotExistException;
 
+
 class router
 {
 	use \accessible;
@@ -20,12 +21,6 @@ class router
 		$this->routes [ $route->uri ] = $route;
 	}
 
-	public function overwrite ( route $route )
-	{
-		$this->checkExistenceFor ( $route->uri );
-		$this->routes [ $route->uri ] = $route;
-	}
-
 	public function has ( string $uri ) : bool
 	{
 		return array_key_exists ( $uri, $this->routes );
@@ -33,13 +28,9 @@ class router
 
 	public function match ( string $uri ) : route
 	{
-		$this->checkExistenceFor ( $uri );
-		return $this->routes [ $uri ]; 
-	}
-
-	private function checkExistenceFor ( string $uri )
-	{
 		if ( ! $this->has ( $uri ) )
 			throw new routeDoesNotExistException ( $uri );
+		
+		return $this->routes [ $uri ]; 
 	}
 }
