@@ -36,9 +36,9 @@ if ( ! function_exists ( 'parameters' ) )
 
 if ( ! function_exists ( 'parse_url_array' ) )
 {
-    function request_parse ( string $value ) : array
+    function parse_url_array ( string $value ) : array
     {
-		$removed = str_replace ( [ '[', ']' ], '', $string );
+		$removed = str_replace ( [ '[', ']' ], '', $value );
 		return explode ( ',', $removed );
     }
 }
