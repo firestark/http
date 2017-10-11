@@ -5,6 +5,7 @@ namespace http\content;
 use closure;
 use http\response;
 
+
 class handler
 {
     private $check, $converter = null;

@@ -5,6 +5,7 @@ namespace http;
 use accessible;
 use arrayaccess;
 
+
 class response implements arrayaccess
 {
 	use accessible;

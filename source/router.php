@@ -16,7 +16,7 @@ class router
 	public function add ( route $route )
 	{
 		if ( $this->has ( $route->uri ) )
-			throw new routeAlreadyExistsException ( $route->uri );
+			throw new \runtimeException ( "A route for: $route->uri already exists." );
 		
 		$this->routes [ $route->uri ] = $route;
 	}
@@ -29,7 +29,7 @@ class router
 	public function match ( string $uri ) : route
 	{
 		if ( ! $this->has ( $uri ) )
-			throw new routeDoesNotExistException ( $uri );
+			throw new \runtimeException ( "A route for: $uri does not exist." );
 		
 		return $this->routes [ $uri ]; 
 	}

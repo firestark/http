@@ -2,6 +2,7 @@
 
 namespace http\exceptions;
 
+
 class wrongContentTypeException extends \runtimeException
 {
 	public function __construct ( string $provided, string $expected )

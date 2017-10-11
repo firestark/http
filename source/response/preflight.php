@@ -4,6 +4,7 @@ namespace http\response;
 
 use http\response;
 
+
 class preflight extends response
 {
 	public function __construct ( string $content = '', int $status = 200, array $headers = [ ] )

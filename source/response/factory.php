@@ -4,6 +4,7 @@ namespace http\response;
 
 use closure;
 
+
 class factory
 {
 	public function ok ( $content = null ) : partial

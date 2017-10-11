@@ -4,6 +4,7 @@ namespace http;
 
 use exception;
 
+
 class redirector
 {
     private $url = '';

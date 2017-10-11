@@ -5,6 +5,7 @@ namespace http;
 use accessible;
 use arrayaccess;
 
+
 class request implements arrayaccess
 {
 	use accessible;

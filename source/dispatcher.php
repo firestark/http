@@ -7,8 +7,8 @@ use FastRoute\DataGenerator\GroupCountBased as generator;
 use FastRoute\Dispatcher\GroupCountBased as base;
 use FastRoute\RouteCollector as router;
 use FastRoute\RouteParser\Std as parser;
-use http\exceptions\methodNotAllowedException;
-use http\exceptions\notFoundException;
+use http\exceptions\kernelException;
+
 
 class dispatcher extends base
 {
@@ -52,9 +52,9 @@ class dispatcher extends base
 			return [ $result [ 1 ], $this->decoded ( $result [ 2 ] ) ];
 
 		if ( $result [ 0 ] === 2 )
-			throw new methodNotAllowedException ( $method, $path );
+			throw new kernelException ( 405 );
 		
 		if ( $result [ 0 ] === 0 )
-			throw new notFoundException ( $method, $path );
+			throw new kernelException ( 404 );
 	}
 }

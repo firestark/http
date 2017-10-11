@@ -2,6 +2,7 @@
 
 namespace http\response;
 
+
 class partial
 {
     use \accessible;

@@ -5,6 +5,7 @@ namespace http\content;
 use http\exceptions\cantHandleTypeException;
 use http\response;
 
+
 class handlers
 {
     private $handlers = [ ];

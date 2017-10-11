@@ -4,6 +4,7 @@ namespace http;
 
 use closure;
 
+
 class middleware
 {
     use \accessible;

@@ -2,6 +2,7 @@
 
 namespace http\exceptions;
 
+
 class cantHandleTypeException extends \exception
 {
 	public function __construct ( string $type )

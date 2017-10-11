@@ -2,6 +2,7 @@
 
 namespace http;
 
+
 trait headers
 {
 	protected $headers = [ ];
