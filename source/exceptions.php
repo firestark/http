@@ -2,6 +2,8 @@
 
 namespace http;
 
+use closure;
+
 
 class exceptions
 {
@@ -27,4 +29,9 @@ class exceptions
 
 		return $this->handlers [ $status ] ( $request );
 	}
+
+    public function has ( int $status ) : bool
+    {
+        return array_key_exists ( $status, $this->handlers );
+    }
 }
