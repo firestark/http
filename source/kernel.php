@@ -42,16 +42,7 @@ class kernel
         return function ( request $request ) : response
         {
             list ( $task, $arguments ) = $this->dispatcher->match ( ( string ) $request );
-
-            try
-            {
-                $content = $this->app->call ( $task, $arguments );
-            }
-            catch ( \TypeError $error )
-            {
-                return $this->exceptions->handle ( 400, $request );
-            }
-
+            $content = $this->app->call ( $task, $arguments );
             return $this->handlers->handle ( $content );
         };
     }
