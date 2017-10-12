@@ -30,8 +30,8 @@ class kernel
 
         try {
         	return $this->middlewares->run ( $request );
-        } 
-        catch ( KernelException $exception ) 
+        }
+        catch ( KernelException $exception )
         {
         	return $this->exceptions->handle ( $exception->status, $request );
         }
@@ -40,9 +40,17 @@ class kernel
     private function dispatch ( ) : closure
     {
         return function ( request $request ) : response
-        {        	
+        {
             list ( $task, $arguments ) = $this->dispatcher->match ( ( string ) $request );
-            $content = $this->app->call ( $task, $arguments );
+
+            try
+            {
+                $content = $this->app->call ( $task, $arguments );
+            }
+            catch ( \TypeError $error )
+            {
+                return $this->exceptions->handle ( 400, $request );
+            }
 
             return $this->handlers->handle ( $content );
         };
