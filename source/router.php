@@ -3,8 +3,6 @@
 namespace http;
 
 use closure;
-use http\exceptions\routeAlreadyExistsException;
-use http\exceptions\routeDoesNotExistException;
 
 
 class router

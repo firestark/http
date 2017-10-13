@@ -52,9 +52,9 @@ class dispatcher extends base
 			return [ $result [ 1 ], $this->decoded ( $result [ 2 ] ) ];
 
 		if ( $result [ 0 ] === 2 )
-			throw new kernelException ( 405 );
+			throw new exception ( 405 );
 		
 		if ( $result [ 0 ] === 0 )
-			throw new kernelException ( 404 );
+			throw new exception ( 404 );
 	}
 }
