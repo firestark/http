@@ -3,7 +3,7 @@
 namespace http;
 
 
-class exception
+class exception extends \exception
 {
 	use \accessible;
 
