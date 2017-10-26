@@ -8,12 +8,12 @@ use http\response;
 
 class handler
 {
-    private $check, $converter = null;
+    private $check, $handle = null;
 
-    public function __construct ( closure $check, closure $converter )
+    public function __construct ( closure $check, closure $handle )
     {
         $this->check = $check;
-        $this->converter = $converter;
+        $this->handle = $handle;
     }
 
     public function canHandle ( $content ) : bool
@@ -23,6 +23,6 @@ class handler
 
     public function handle ( $content, response $response ) : response
     {
-        return call_user_func ( $this->converter, $content, $response );
+        return call_user_func ( $this->handle, $content, $response );
     }
 }
