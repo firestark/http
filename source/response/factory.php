@@ -34,4 +34,9 @@ class factory
 	{
 		return new partial ( $content, 409 );
 	}
+
+	public function error ( $content ) : partial
+	{
+		return new partial ( $content, 500 );
+	}
 }
