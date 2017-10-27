@@ -20,6 +20,11 @@ class factory
 		return new partial ( $content, 201 );
 	}
 
+	public function badRequest ( $content ) : partial
+	{
+		return new partial ( $content, 400 );
+	}
+
 	public function notFound ( $content ) : partial
 	{
 		return new partial ( $content, 404 );
