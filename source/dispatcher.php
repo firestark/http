@@ -39,6 +39,16 @@ class dispatcher extends base
 		return $this->handle ( $result, $method, $path );
 	}
 
+	protected function notFound ( string $method, string $path )
+	{
+		throw new exception ( 404 );
+	}
+
+	protected function notAllowed ( string $method, string $path )
+    {
+        throw new exception ( 405 );
+    }
+
 	private function decoded ( array $arguments ) : array
     {
         foreach ( $arguments as $key => $value )
@@ -52,9 +62,9 @@ class dispatcher extends base
 			return [ $result [ 1 ], $this->decoded ( $result [ 2 ] ) ];
 
 		if ( $result [ 0 ] === 2 )
-			throw new exception ( 405 );
+			$this->notAllowed ( $method, $path );
 		
 		if ( $result [ 0 ] === 0 )
-			throw new exception ( 404 );
+			$this->notFound ( $method, $path );
 	}
 }

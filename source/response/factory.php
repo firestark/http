@@ -25,6 +25,11 @@ class factory
 		return new partial ( $content, 404 );
 	}
 
+	public function notAllowed ( $content ) : partial
+	{
+		return new partial ( $content, 405 );
+	}
+
 	public function conflict ( $content ) : partial
 	{
 		return new partial ( $content, 409 );
