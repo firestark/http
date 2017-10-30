@@ -20,8 +20,9 @@ class factory
 		return new partial ( $content, 201 );
 	}
 
-	public function badRequest ( $content ) : partial
+	public function badRequest ( $content = '' ) : partial
 	{
+		$content = ( $content ) ?: 'Bad request.';
 		return new partial ( $content, 400 );
 	}
 
