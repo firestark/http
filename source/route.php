@@ -13,7 +13,6 @@ class route
 	private $path = '';
 	private $method = '';
 	private $task = null;
-    private $isDynamic = false;
 
 	public function __construct ( string $uri, closure $task )
 	{
@@ -23,7 +22,5 @@ class route
 		$this->path = $path;
 		$this->method = $method;
 		$this->task = $task;
-
-        $this->isDynamic = ( strpos ( $uri, '{' ) !== false );
 	}
 }

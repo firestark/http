@@ -33,7 +33,7 @@ class dispatcher extends base
 
 	private function add ( route $route )
 	{
-        if ( $route->isDynamic )
+        if ( ( strpos ( $route->uri, '{' ) !== false ) )
             $this->deffered [ ] = $route;
         else
             $this->router->addRoute ( $route->method, $route->path, $route->task );
