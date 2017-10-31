@@ -27,22 +27,22 @@ class optionsRouter extends router
 
 	private function createOption ( string $method, string $uri )
 	{
-		$this->routes [ $uri ] = new route ( $uri, function ( ) use ( $method )
+		parent::add ( new route ( $uri, function ( ) use ( $method )
 		{
 			$response = new preflight;
 			$response->allowedMethod ( $method );
 			return $response;
-		} );
+		} ) );
 	}
 
 	private function addOptionMethod ( string $method, string $uri )
 	{
 		$response = ( $this->routes [ $uri ]->task ) ( );
 
-		$this->routes [ $uri ] = new route ( $uri, function ( ) use ( $response, $method )
+		parent::modify ( new route ( $uri, function ( ) use ( $response, $method )
 		{
 			$response->allowedMethod ( $method );
 			return $response;
-		} );
+		} ) );
 	}
 }

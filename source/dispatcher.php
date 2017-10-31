@@ -13,6 +13,7 @@ use http\exceptions\kernelException;
 class dispatcher extends base
 {
 	private $router = null;
+    private $deffered = [ ];
 
 	public function __construct ( array $routes )
 	{
@@ -22,14 +23,20 @@ class dispatcher extends base
 		);
 
 		foreach ( $routes as $route )
-			$this->add ( $route->method, $route->path, $route->task );
+            $this->add ( $route );
+
+        foreach ( $this->deffered as $route )
+            $this->router->addRoute ( $route->method, $route->path, $route->task );
 
 		parent::__construct ( $this->router->getData ( ) );
 	}
 
-	private function add ( string $method, string $uri, closure $task )
+	private function add ( route $route )
 	{
-		$this->router->addRoute ( $method, $uri, $task );
+        if ( $route->isDynamic )
+            $this->deffered [ ] = $route;
+        else
+            $this->router->addRoute ( $route->method, $route->path, $route->task );
 	}
 
 	public function match ( string $uri )
@@ -63,7 +70,7 @@ class dispatcher extends base
 
 		if ( $result [ 0 ] === 2 )
 			$this->notAllowed ( $method, $path );
-		
+
 		if ( $result [ 0 ] === 0 )
 			$this->notFound ( $method, $path );
 	}

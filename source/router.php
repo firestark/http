@@ -9,20 +9,14 @@ class router
 {
 	use \accessible;
 
-	protected $routes =
-    [
-        'static' => [ ],
-        'dynamic' => [ ]
-    ];
+	protected $routes = [ ];
 
 	public function add ( route $route )
 	{
 		if ( $this->has ( $route->uri ) )
 			throw new \runtimeException ( "A route for: $route->uri already exists." );
 
-        ( $route->isDynamic ) ?
-            $this->routes [ 'dynamic' ] [ $route->uri ] = $route :
-            $this->routes [ 'static' ] [ $route->uri ] = $route;
+        $this->routes [ $route->uri ] = $route;
 	}
 
 	public function has ( string $uri ) : bool
@@ -30,11 +24,11 @@ class router
 		return array_key_exists ( $uri, $this->routes );
 	}
 
-	public function match ( string $uri ) : route
-	{
-		if ( ! $this->has ( $uri ) )
-			throw new \runtimeException ( "A route for: $uri does not exist." );
+    public function modify ( route $route )
+    {
+        if ( ! $this->has ( $route->uri ) )
+            throw new \runtimeException ( "A route for: $uri does not exist." );
 
-		return $this->routes [ $uri ];
-	}
+        $this->routes [ $route->uri ] = $route;
+    }
 }
