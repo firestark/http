@@ -12,8 +12,7 @@ class preflight extends response
 	public function __construct ( string $content = '', int $status = 200, array $headers = [ ] )
 	{
 		parent::__construct ( $content, $status, $headers );
-        $this [ 'Access-Control-Allow-Methods' ] = '';
-        $this->allowedMethod ( 'OPTIONS' );
+        $this [ 'Access-Control-Allow-Methods' ] = 'OPTIONS';
 	}
 
 	public function allowedMethod ( string $method )
