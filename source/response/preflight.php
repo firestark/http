@@ -16,11 +16,6 @@ class preflight extends response
 
     private $allowedMethods = [ ];
 
-	public function __construct ( string $content = '', int $status = 200, array $headers = [ ] )
-	{
-		parent::__construct ( $content, $status, $headers );
-	}
-
 	public function allowedMethod ( string $method )
 	{
         if ( in_array ( $method, $this->allowedMethods ) )
