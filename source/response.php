@@ -18,7 +18,8 @@ class response implements arrayaccess
 	{
 		$this->content = $content;
 		$this->status = $status;
-		$this->headers = $headers;
+
+		$this->headers = array_merge ( $headers, $this->headers );
 	}
 
 	public function send ( )

@@ -7,12 +7,18 @@ use http\response;
 
 class preflight extends response
 {
+	protected $headers = 
+	[
+		'Content-Type' 					=> '',
+		'Content-Length' 				=> 0,
+		'Access-Control-Allow-Methods' 	=> 'OPTIONS'
+	];
+
     private $allowedMethods = [ ];
 
 	public function __construct ( string $content = '', int $status = 200, array $headers = [ ] )
 	{
 		parent::__construct ( $content, $status, $headers );
-        $this [ 'Access-Control-Allow-Methods' ] = 'OPTIONS';
 	}
 
 	public function allowedMethod ( string $method )
