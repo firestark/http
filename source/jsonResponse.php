@@ -3,7 +3,7 @@
 namespace http;
 
 
-class JSONresponse extends response
+class jsonResponse extends response
 {
 	protected $headers =
 	[
