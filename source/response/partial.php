@@ -5,16 +5,14 @@ namespace http\response;
 
 class partial
 {
-    use \accessible;
-    use \http\headers;
+    public $headers = [ ];
+	public $content = null;
+    public $status = 200;
 
-	private $data = null;
-    private $status = 200;
-
-	public function __construct ( $data, int $status = 200, array $headers = [ ] )
-	{
-		$this->data = $data;
-		$this->status = $status;
-		$this->headers = $headers;
-	}
+    public function __construct ( $content = '', int $status = 200, array $headers = [ ] )
+    {
+    	$this->content = $content;
+    	$this->status = $status;
+    	$this->headers = $headers;
+    }
 }

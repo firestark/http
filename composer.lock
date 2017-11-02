@@ -12,27 +12,31 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/firestark/support.git",
-                "reference": "76b64f08a6e38835424b313c467fecb02d296720"
+                "reference": "1c5944e2d0f972c4946f684bb17929129f6bd05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firestark/support/zipball/76b64f08a6e38835424b313c467fecb02d296720",
-                "reference": "76b64f08a6e38835424b313c467fecb02d296720",
+                "url": "https://api.github.com/repos/firestark/support/zipball/1c5944e2d0f972c4946f684bb17929129f6bd05a",
+                "reference": "1c5944e2d0f972c4946f684bb17929129f6bd05a",
                 "shasum": ""
+            },
+            "require-dev": {
+                "firestark/testing": "*"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "": [
-                        "source/accessibility",
-                        "source/exceptions"
-                    ],
+                    "": "source/accessibility",
                     "is\\": "source/is"
                 },
                 "files": [
                     "source/helpers/array.php",
                     "source/helpers/checks.php",
+                    "source/helpers/misc.php",
                     "source/helpers/text.php"
+                ],
+                "classmap": [
+                    "source/facade.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -58,7 +62,7 @@
                 "lionar",
                 "support"
             ],
-            "time": "2017-10-02T08:29:01+00:00"
+            "time": "2017-10-24T09:24:08+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -66,19 +70,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "7ced406715e68151947fa540ab58eb238864215d"
+                "reference": "149947caa5b17ca6b06d21672f910c529efed07d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/7ced406715e68151947fa540ab58eb238864215d",
-                "reference": "7ced406715e68151947fa540ab58eb238864215d",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/149947caa5b17ca6b06d21672f910c529efed07d",
+                "reference": "149947caa5b17ca6b06d21672f910c529efed07d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8|~5.7"
+                "phpunit/phpunit": "^4.8.35|~5.7"
             },
             "type": "library",
             "autoload": {
@@ -104,7 +108,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2017-05-18T13:44:56+00:00"
+            "time": "2017-10-14T15:39:28+00:00"
         }
     ],
     "packages-dev": [
@@ -114,28 +118,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/firestark/testing.git",
-                "reference": "7e0cfc1dca13ff4c97cf8ebf1685074a874140ff"
+                "reference": "c4d624fe456a87dfe47592a7d6129305d7c02efe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firestark/testing/zipball/7e0cfc1dca13ff4c97cf8ebf1685074a874140ff",
-                "reference": "7e0cfc1dca13ff4c97cf8ebf1685074a874140ff",
+                "url": "https://api.github.com/repos/firestark/testing/zipball/c4d624fe456a87dfe47592a7d6129305d7c02efe",
+                "reference": "c4d624fe456a87dfe47592a7d6129305d7c02efe",
                 "shasum": ""
             },
             "require": {
-                "mockery/mockery": "*"
-            },
-            "require-dev": {
-                "firestark/support": "*"
+                "symfony/var-dumper": "*"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "": "source"
+                    "testing\\": "source"
                 },
+                "classmap": [],
                 "files": [
-                    "source/helpers.php",
-                    "../../hamcrest/hamcrest-php/hamcrest/Hamcrest.php"
+                    "source/debug/functions.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -145,137 +146,143 @@
             "authors": [
                 {
                     "name": "Aron Wouters",
-                    "email": "lionar@mail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Irsan van Wel",
-                    "email": "vanwel@eyedouble.nl",
+                    "email": "firestark@mail.com",
                     "role": "Developer"
                 }
             ],
             "description": "A unit testing framework.",
             "keywords": [
-                "Eyedouble",
-                "firestark",
-                "framework",
-                "lionar",
                 "unit testing"
             ],
-            "time": "2017-08-31T12:27:53+00:00"
+            "time": "2017-11-01T14:36:15+00:00"
         },
         {
-            "name": "hamcrest/hamcrest-php",
+            "name": "symfony/polyfill-mbstring",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/hamcrest/hamcrest-php.git",
-                "reference": "10b977bd20ea6a2fcf0e32a941c9140fbdb75033"
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/10b977bd20ea6a2fcf0e32a941c9140fbdb75033",
-                "reference": "10b977bd20ea6a2fcf0e32a941c9140fbdb75033",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3|^7.0"
+                "php": ">=5.3.3"
             },
-            "replace": {
-                "cordoval/hamcrest-php": "*",
-                "davedevelopment/hamcrest-php": "*",
-                "kodova/hamcrest-php": "*"
-            },
-            "require-dev": {
-                "phpunit/php-file-iterator": "1.3.3",
-                "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "^1.0"
+            "suggest": {
+                "ext-mbstring": "For best performance"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
-                "classmap": [
-                    "hamcrest"
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
-            "description": "This is the PHP port of Hamcrest Matchers",
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
             "keywords": [
-                "test"
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
             ],
-            "time": "2017-04-07T19:46:20+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
-            "name": "mockery/mockery",
-            "version": "dev-master",
+            "name": "symfony/var-dumper",
+            "version": "3.4.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mockery/mockery.git",
-                "reference": "87fc5f641657833f7c96f14ed3067effe94a0824"
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "46bd9f0c09d6c47f45a5efc1f6234b133f2d838d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/87fc5f641657833f7c96f14ed3067effe94a0824",
-                "reference": "87fc5f641657833f7c96f14ed3067effe94a0824",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/46bd9f0c09d6c47f45a5efc1f6234b133f2d838d",
+                "reference": "46bd9f0c09d6c47f45a5efc1f6234b133f2d838d",
                 "shasum": ""
             },
             "require": {
-                "hamcrest/hamcrest-php": "~2.0",
-                "lib-pcre": ">=7.0",
-                "php": ">=5.6.0"
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.7|~6.1"
+                "ext-iconv": "*",
+                "twig/twig": "~1.34|~2.4"
+            },
+            "suggest": {
+                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
+                "ext-intl": "To show region name in time zone dump",
+                "ext-symfony_debug": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Mockery": "library/"
-                }
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
-                    "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
                 },
                 {
-                    "name": "Dave Marshall",
-                    "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "http://davedevelopment.co.uk"
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
-            "homepage": "http://github.com/mockery/mockery",
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "https://symfony.com",
             "keywords": [
-                "BDD",
-                "TDD",
-                "library",
-                "mock",
-                "mock objects",
-                "mockery",
-                "stub",
-                "test",
-                "test double",
-                "testing"
+                "debug",
+                "dump"
             ],
-            "time": "2017-09-27T08:51:04+00:00"
+            "time": "2017-10-30T07:32:34+00:00"
         }
     ],
     "aliases": [],
