@@ -29,14 +29,4 @@ class response implements arrayaccess
 		http_response_code ( $this->status );
 		echo $this->content;
 	}
-	
-	public function status ( int $code )
-	{
-		$this->status = $code;
-	}
-
-	public function content ( string $content )
-	{
-		$this->content = $content;
-	}
 }
