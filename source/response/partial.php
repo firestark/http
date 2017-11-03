@@ -3,7 +3,7 @@
 namespace http\response;
 
 
-class partial
+class partial implements \arrayaccess
 {
 	use \accessible;
     use \http\headers;
