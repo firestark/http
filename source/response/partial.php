@@ -5,6 +5,7 @@ namespace http\response;
 
 class partial
 {
+	use \accessible;
     use \http\headers;
     
 	public $content = null;
