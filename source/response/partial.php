@@ -5,7 +5,8 @@ namespace http\response;
 
 class partial
 {
-    public $headers = [ ];
+    use \http\headers;
+    
 	public $content = null;
     public $status = 200;
 
