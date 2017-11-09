@@ -48,12 +48,12 @@ class dispatcher extends base
 
 	protected function notFound ( string $method, string $path )
 	{
-		throw new exception ( 404 );
+		throw new exception ( 404, "`{$method} {$path}` can not be handled, there is no route defined for it." );
 	}
 
 	protected function notAllowed ( string $method, string $path )
     {
-        throw new exception ( 405 );
+        throw new exception ( 405, "`{$method}` is not allowed for `{$path}`." );
     }
 
 	private function decoded ( array $arguments ) : array
