@@ -7,9 +7,9 @@ use closure;
 
 class factory
 {
-	public function ok ( $content = null ) : partial
+	public function ok ( $content = '' ) : partial
 	{
-		if ( $content === null )
+		if ( empty ( $content ) )
 			return new partial ( $content, 204 );
 
 		return new partial ( $content, 200 );
