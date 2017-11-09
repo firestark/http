@@ -13,7 +13,6 @@ class request implements arrayaccess
 
 	protected $uri = '/';
 	protected $method = 'GET';
-	protected $stateMethods = [ 'POST', 'PUT', 'PATCH', 'DELETE' ];
 	protected $parameters = [ ];
 	protected $content = '';
 
@@ -38,11 +37,6 @@ class request implements arrayaccess
 	public function get ( string $parameter, $default = null )
 	{
 		return array_get ( $this->parameters, $parameter, $default );
-	}
-
-	public function isRequestingStateChange ( ) : bool
-	{
-		return in_array ( $this->method, $this->stateMethods );
 	}
 
     public function __toString ( ) : string
