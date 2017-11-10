@@ -6,10 +6,10 @@ namespace http;
 class exception extends \exception implements \is\readable
 {
 	use \accessible;
-	use \readable
+	use \readable;
 
-	private $status = 500;
-	private $message = '';
+	protected $status = 500;
+	protected $message = '';
 
 	public function __construct ( int $status, string $message )
 	{
