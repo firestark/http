@@ -14,9 +14,9 @@ class response implements arrayaccess
 	protected $status = 200;
 	protected $content = '';
 
-	public function __construct ( string $content = '', int $status = 200, array $headers = [ ] )
+	public function __construct ( $content = '', int $status = 200, array $headers = [ ] )
 	{
-		$this->content = $content;
+		$this->content = $this->prepare ( $content );
 		$this->status = $status;
 
 		$this->headers = array_merge ( $this->headers,$headers );
@@ -28,5 +28,15 @@ class response implements arrayaccess
 			header ( "$key: $value" );
 		http_response_code ( $this->status );
 		echo $this->content;
+	}
+
+	protected function prepare ( $content ) : string
+	{
+		if ( ! is_string ( $content ) && null !== $content && ! is_numeric ( $content ) 
+			&& ! is_callable ( array ( $content, '__toString' ) ) )
+            throw new \invalidArgumentException (
+            	sprintf ( 'The Response content must be a string or object implementing __toString(), "%s" given.', gettype ( $content ) ) );
+
+        return ( string ) $content;
 	}
 }

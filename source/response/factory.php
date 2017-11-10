@@ -2,47 +2,60 @@
 
 namespace http\response;
 
-use closure;
+use http\response;
 
 
 class factory
 {
-	public function ok ( $content = '' ) : partial
+	private $response = '';
+
+	public function __construct ( string $class = response::class )
+	{
+		$this->response = $class;
+	}
+
+	public function ok ( $content = '' )
 	{
 		if ( empty ( $content ) )
-			return new partial ( $content, 204 );
+			return $this->respond ( $content, 204 );
 
-		return new partial ( $content, 200 );
+		return $this->respond ( $content, 200 );
 	}
 
-	public function created ( $content ) : partial
+	public function created ( $content )
 	{
-		return new partial ( $content, 201 );
+		return $this->respond ( $content, 201 );
 	}
 
-	public function badRequest ( $content = '' ) : partial
+	public function badRequest ( $content = '' )
 	{
 		$content = ( $content ) ?: 'Bad request.';
-		return new partial ( $content, 400 );
+		return $this->respond ( $content, 400 );
 	}
 
-	public function notFound ( $content ) : partial
+	public function notFound ( $content )
 	{
-		return new partial ( $content, 404 );
+		return $this->respond ( $content, 404 );
 	}
 
-	public function notAllowed ( $content ) : partial
+	public function notAllowed ( $content )
 	{
-		return new partial ( $content, 405 );
+		return $this->respond ( $content, 405 );
 	}
 
-	public function conflict ( $content ) : partial
+	public function conflict ( $content )
 	{
-		return new partial ( $content, 409 );
+		return $this->respond ( $content, 409 );
 	}
 
-	public function error ( $content ) : partial
+	public function error ( $content )
 	{
-		return new partial ( $content, 500 );
+		return $this->respond ( $content, 500 );
+	}
+
+	private function respond ( $content, int $status ) : response
+	{
+		$response = $this->response;
+		return new $response ( $content, $status );
 	}
 }
