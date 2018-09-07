@@ -16,9 +16,6 @@ class factory
 
 	public function ok ( $content = '' )
 	{
-		if ( empty ( $content ) )
-			return $this->respond ( $content, 204 );
-
 		return $this->respond ( $content, 200 );
 	}
 
