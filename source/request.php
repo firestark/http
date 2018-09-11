@@ -39,6 +39,11 @@ class request implements arrayaccess
 		return array_get ( $this->parameters, $parameter, $default );
 	}
 
+	public function set ( string $parameter, $value )
+	{
+		$this->parameters [ $parameter ] = $value;
+	}
+
     public function __toString ( ) : string
     {
         return $this->method . ' ' . $this->uri;
