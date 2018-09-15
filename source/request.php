@@ -30,7 +30,7 @@ class request implements arrayaccess
 	{
 		$uri = parse_url ( $_SERVER [ 'REQUEST_URI' ] ) [ 'path' ];
 		return new static ( $uri, $_SERVER [ 'REQUEST_METHOD' ],
-			parameters ( ( $_SERVER [ 'HTTP_CONTENT_TYPE' ] ) ?? '' ),
+		parameters ( get_mime_type ( ) ),
 			'', getallheaders ( ) );
 	}
 

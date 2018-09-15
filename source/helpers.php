@@ -42,3 +42,17 @@ if ( ! function_exists ( 'parse_url_array' ) )
 		return explode ( ',', $removed );
     }
 }
+
+if ( ! function_exists ( 'get_mime_type' ) )
+{
+    function get_mime_type ( ) : string
+    {
+        if ( isset ( $_SERVER [ 'CONTENT_TYPE' ] ) )
+            return $_SERVER [ 'CONTENT_TYPE' ];
+
+        if ( isset ( $_SERVER [ 'HTTP_CONTENT_TYPE' ] ) )
+            return $_SERVER [ 'HTTP_CONTENT_TYPE' ];
+        
+        return '';
+    }
+}
