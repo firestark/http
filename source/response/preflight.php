@@ -11,7 +11,9 @@ class preflight extends response
 	[
 		'Content-Type' 					=> '',
 		'Content-Length' 				=> 0,
-		'Access-Control-Allow-Methods' 	=> 'OPTIONS'
+		'Access-Control-Allow-Methods' 	=> 'OPTIONS',
+		'Access-Control-Allow-Headers' 	=> 'Content-Type',
+		'Access-Control-Allow-Origin'   => '*'
 	];
 
     private $allowedMethods = [ 'OPTIONS' ];
