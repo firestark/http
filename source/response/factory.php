@@ -30,6 +30,11 @@ class factory
 		return $this->respond ( $content, 400 );
 	}
 
+	public function forbidden ( $content )
+	{
+		return $this->respond ( $content, 403 );
+	}
+
 	public function notFound ( $content )
 	{
 		return $this->respond ( $content, 404 );
