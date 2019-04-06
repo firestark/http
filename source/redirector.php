@@ -10,7 +10,7 @@ class redirector
     private $url = '';
     private $previous = '';
     
-    public function __construct ( string $url = '', string $previous = '' )
+    public function __construct ( string $url = '', string $previous = '/' )
     {
         $this->url = rtrim ( $url, '/' );
         $this->previous = $previous;
