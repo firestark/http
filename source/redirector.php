@@ -33,7 +33,7 @@ class redirector
         return $this->respond ( $url, $status );
     }
     
-    private function respond ( string $url, int $status ) : response
+    protected function respond ( string $url, int $status ) : response
     {
         $response = new response ( 'Redirecting', $status );
         $response [ 'Location' ] = $url;
