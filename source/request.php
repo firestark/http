@@ -44,6 +44,11 @@ class request implements arrayaccess
 		$this->parameters [ $parameter ] = $value;
 	}
 
+	public function has ( string $parameter ) : bool
+	{
+		return isset ( $this->parameters [ $parameter ] );
+	}
+
 	public function all ( ) : array
 	{
 		return $this->parameters;
