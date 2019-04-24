@@ -13,30 +13,23 @@ use http\exceptions\kernelException;
 class dispatcher extends base
 {
 	private $router = null;
-    private $deffered = [ ];
 
 	public function __construct ( array $routes )
 	{
+		usort ( $routes, function ( $a, $b )
+		{
+			return strcasecmp ( $a->uri , $b->uri ); 
+		} );
+
 		$this->router = new router (
 		  	new parser,
 		  	new generator
 		);
 
 		foreach ( $routes as $route )
-            $this->add ( $route );
-
-        foreach ( $this->deffered as $route )
-            $this->router->addRoute ( $route->method, $route->path, $route->task );
+			$this->router->addRoute ( $route->method, $route->path, $route->task );
 
 		parent::__construct ( $this->router->getData ( ) );
-	}
-
-	private function add ( route $route )
-	{
-        if ( ( strpos ( $route->uri, '{' ) !== false ) )
-            $this->deffered [ ] = $route;
-        else
-            $this->router->addRoute ( $route->method, $route->path, $route->task );
 	}
 
 	public function match ( string $uri )
