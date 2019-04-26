@@ -21,9 +21,6 @@ class group
 
     public function add ( route $route )
 	{
-		if ( $this->has ( $route->uri ) )
-			throw new \runtimeException ( "A route for: {$route->uri} already exists." );
-
         $this->routes [ $route->uri ] = $route;
 	}
 

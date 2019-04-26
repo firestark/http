@@ -19,9 +19,6 @@ class router
 		if ( ! is_null ( $this->group ) )
 			return $this->group->add ( $route );
 
-		if ( $this->has ( $route->uri ) )
-			throw new \runtimeException ( "A route for: {$route->uri} already exists." );
-
         $this->routes [ $route->uri ] = $route;
 	}
 
