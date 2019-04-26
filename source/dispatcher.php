@@ -8,26 +8,25 @@ use FastRoute\Dispatcher\GroupCountBased as base;
 use FastRoute\RouteCollector as router;
 use FastRoute\RouteParser\Std as parser;
 use http\exceptions\kernelException;
+use http\route\group;
 
 
 class dispatcher extends base
 {
 	private $router = null;
 
-	public function __construct ( array $routes )
+	public function __construct ( array $routes, array $groups )
 	{
-		usort ( $routes, function ( $a, $b )
-		{
-			return strcasecmp ( $a->uri , $b->uri ); 
-		} );
-
 		$this->router = new router (
 		  	new parser,
 		  	new generator
 		);
 
-		foreach ( $routes as $route )
+		foreach ( $this->sort ( $routes ) as $route )
 			$this->router->addRoute ( $route->method, $route->path, $route->task );
+
+		foreach ( $groups as $group )
+			$this->addGroup ( $group );
 
 		parent::__construct ( $this->router->getData ( ) );
 	}
@@ -66,5 +65,24 @@ class dispatcher extends base
 
 		if ( $result [ 0 ] === 0 )
 			$this->notFound ( $method, $path );
+	}
+
+	private function addGroup ( group $group )
+	{
+		$this->router->addGroup ( $group->uri, function ( router $r ) use ( $group )
+		{
+			foreach ( $this->sort ( $group->routes ) as $route )
+				$r->addRoute ( $route->method, $route->path, $route->task );
+		});
+	}
+
+	private function sort ( array $routes ) : array
+	{
+		usort ( $routes, function ( route $a, route $b )
+		{
+			return strcasecmp ( $a->uri , $b->uri ); 
+		} );
+		
+		return $routes;
 	}
 }
