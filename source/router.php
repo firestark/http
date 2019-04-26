@@ -23,12 +23,4 @@ class router
 	{
 		return array_key_exists ( $uri, $this->routes );
 	}
-
-    public function modify ( route $route )
-    {
-        if ( ! $this->has ( $route->uri ) )
-            throw new \runtimeException ( "A route for: $uri does not exist." );
-
-        $this->routes [ $route->uri ] = $route;
-    }
 }
