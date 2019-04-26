@@ -28,7 +28,7 @@ class request implements arrayaccess
 
 	public static function capture ( ) : request
 	{
-		$uri = parse_url ( $_SERVER [ 'REQUEST_URI' ] ) [ 'path' ];
+		$uri = parse_url ( $_SERVER [ 'REQUEST_URI' ] ) [ 'path' ] ?? '/';
 		return new static ( $uri, $_SERVER [ 'REQUEST_METHOD' ],
 		parameters ( get_mime_type ( ) ),
 			'', getallheaders ( ) );
