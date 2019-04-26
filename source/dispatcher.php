@@ -40,7 +40,7 @@ class dispatcher extends base
 
 	protected function notFound ( string $method, string $path )
 	{
-		throw new exception ( 404, "`{$method} {$path}` can not be handled, there is no route defined for it." );
+		throw new exception ( 404, "`{$method} {$path}` can not be handled, there is no route defined for it. Did you forget to add a `/` at the end of the url?" );
 	}
 
 	protected function notAllowed ( string $method, string $path )
