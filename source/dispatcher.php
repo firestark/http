@@ -31,11 +31,10 @@ class dispatcher extends base
 		parent::__construct ( $this->router->getData ( ) );
 	}
 
-	public function match ( string $uri )
+	public function match ( string $method, string $uri )
 	{
-		list ( $method, $path ) = explode ( ' ', $uri );
-		$result = parent::dispatch ( $method, $path );
-		return $this->handle ( $result, $method, $path );
+		$result = parent::dispatch ( $method, $uri );
+		return $this->handle ( $result, $method, $uri );
 	}
 
 	protected function notFound ( string $method, string $path )
