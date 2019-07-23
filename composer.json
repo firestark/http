@@ -25,7 +25,8 @@
     ],
     "require": {
         "firestark/support": "*",
-        "nikic/fast-route": "*"
+        "nikic/fast-route": "*",
+        "peridot-php/peridot": "dev-master"
     },
     "require-dev": {
         "firestark/testing": "*"
