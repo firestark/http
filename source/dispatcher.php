@@ -7,7 +7,6 @@ use FastRoute\DataGenerator\GroupCountBased as generator;
 use FastRoute\Dispatcher\GroupCountBased as base;
 use FastRoute\RouteCollector as router;
 use FastRoute\RouteParser\Std as parser;
-use http\exceptions\kernelException;
 use http\route\group;
 
 
